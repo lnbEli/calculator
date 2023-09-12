@@ -1,3 +1,14 @@
+const calcScreen = document.querySelector(".calc-screen");
+const operandLeft = document.querySelector(".operandLeft");
+const operandRight = document.querySelector(".operandRight");
+const operator = document.querySelector(".operator");
+
+// create div that can be multiplied to beused as buttons of calc
+const button = document.createElement("div");
+const arrayOfButtonOperands = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+const arrayOfButtonsOperators = ["x", "/", "-", "+"];
+const arrayOfButtonExtras = [0, "C", "="];
+
 function add(num1, num2) {
   return num1 + num2;
 }
@@ -13,10 +24,6 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
   return num1 / num2;
 }
-
-const operandLeft = document.querySelector(".operandLeft");
-const operandRight = document.querySelector(".operandRight");
-const operator = document.querySelector(".operator");
 
 function operate(operator, operandLeft, operandRight) {
   if (operator === "+") {
