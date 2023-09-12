@@ -1,0 +1,109 @@
+body {
+}
+
+.header {
+}
+.calc-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calc-body {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.calc-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  width: 100%;
+  height: 30%;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: rgb(128, 128, 128);
+}
+.calc-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 30%;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: lightgray;
+  font-size: 42px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  /* text-align: center; */
+}
+.calc-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  width: 100%;
+  height: 70%;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+.calc-buttons-body {
+  display: flex;
+  width: 80%;
+  height: 70%;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(128, 128, 128);
+}
+
+.calc-buttons-body-left {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 70%;
+  /* border: 2px solid black; */
+  padding: 2px;
+}
+.calc-buttons-body-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  align-items: center;
+  width: 30%;
+  /* border: 2px solid red; */
+}
+.calc-button {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  width: 30%;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(105, 179, 244);
+}
+
+.calc-button-right {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  width: 90%;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: aquamarine;
+}
+
+.calc-button-clear-equal {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  width: 30%;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(30, 67, 99);
+}
