@@ -3,7 +3,7 @@ const operandLeft = document.querySelector(".operandLeft");
 const operandRight = document.querySelector(".operandRight");
 const operator = document.querySelector(".operator");
 
-// create div that can be multiplied to beused as buttons of calc
+// create div that can be multiplied to be used as buttons of calc
 const button = document.createElement("div");
 const arrayOfButtonOperands = [9, 8, 7, 6, 5, 4, 3, 2, 1];
 const arrayOfButtonsOperators = ["x", "/", "-", "+"];
@@ -39,14 +39,16 @@ function operate(operator, operandLeft, operandRight) {
   }
 }
 
-// add event listener for the number keys + Clear & =
+// add event listener for all keys.
 
-const numbers = document.querySelectorAll(".calc-button");
+const numberButtons = document.querySelectorAll(
+  ".calc-button, .calc-button-right "
+);
 
-numbers.forEach((el) => el.addEventListener("click", clickNumber));
+numberButtons.forEach((el) =>
+  el.addEventListener("click", returnClickedNumber)
+);
 
-function clickNumber() {
+function returnClickedNumber() {
   console.log(this.textContent);
 }
-
-//add event listener to the operator keys
