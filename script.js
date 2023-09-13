@@ -38,3 +38,15 @@ function operate(operator, operandLeft, operandRight) {
     console.log("error????");
   }
 }
+
+// add event listener for the number keys + Clear & =
+
+const numbers = document.querySelectorAll(".calc-button");
+
+numbers.forEach((el) => el.addEventListener("click", clickNumber));
+
+function clickNumber() {
+  console.log(this.textContent);
+}
+
+//add event listener to the operator keys

@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   width: 400px;
   height: 600px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 10px;
 }
 .calc-top {
@@ -86,6 +86,7 @@ body {
   border: 2px solid black;
   border-radius: 5px;
   background-color: rgb(105, 179, 244);
+  cursor: pointer;
 }
 
 .calc-button-right {
