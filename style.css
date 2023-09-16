@@ -45,12 +45,28 @@ body {
 }
 
 .calc-screen-top {
-  /* border: 2px solid red; */
+  display: flex;
+  justify-content: flex-end;
+  white-space: nowrap;
+  overflow: hidden;
   font-size: 22px;
+  /* text-align: right; */
+  /* border: 2px solid red; */
+  width: 100%;
+  height: 30%;
+  /* overflow: hidden; */
 }
 .calc-screen-bottom {
+  display: flex;
+  justify-content: flex-end;
+  white-space: nowrap;
+  overflow: hidden;
+  /* text-align: right; */
   /* border: 2px solid red; */
+  height: 70%;
+  width: 100%;
   font-size: 42px;
+  /* overflow: hidden; */
 }
 
 .calc-bottom {
