@@ -6,6 +6,11 @@ let operator;
 let answer;
 let operatorInUse = true;
 let button;
+let extendedMode = "";
+let startUp = true;
+
+const switchButton = document.querySelector(".btn-test");
+switchButton.addEventListener("click", addedFunctionalityToggle);
 
 function add(num1, num2) {
   return num1 + num2;
@@ -120,30 +125,52 @@ function updateOperatorOperandLeftAndScreen() {
 }
 
 function addedFunctionalityToggle() {
-  //Add new button to righthand side
   const calcButtonsBodyRight = document.querySelector(
     ".calc-buttons-body-right"
   );
-  const newRightButton = document.createElement("div");
-  newRightButton.textContent = "Delete";
-  newRightButton.classList.add("calc-button-right");
-  calcButtonsBodyRight.append(newRightButton);
+  if (startUp) {
+    startUp = false;
+    return;
+  } else if (!extendedMode) {
+    //Add new button to righthand side
+    const newRightButton = document.createElement("div");
+    newRightButton.textContent = "Delete";
+    newRightButton.classList.add("calc-button-right");
+    newRightButton.classList.add("extended-mode");
+    calcButtonsBodyRight.append(newRightButton);
 
-  // //Add new button to lefthand side
-  const calcButtonsBody = document.querySelector(".calc-buttons-body-left");
-  const newLeftButton = document.createElement("div");
-  newLeftButton.textContent = ".";
-  newLeftButton.classList.add("calc-button");
-  newLeftButton.classList.add("calc-button-clear-equal");
-  calcButtonsBody.append(newLeftButton);
+    //Add new button to lefthand side
+    const calcButtonsBody = document.querySelector(".calc-buttons-body-left");
+    const newLeftButton = document.createElement("div");
+    newLeftButton.textContent = ".";
+    newLeftButton.classList.add("calc-button");
+    newLeftButton.classList.add("calc-button-clear-equal");
+    newLeftButton.classList.add("extended-mode");
+    calcButtonsBody.append(newLeftButton);
 
-  //adjust size of keypad and gap in keys
-  const calcBody = document.querySelector(".calc-body");
-  calcBody.style.height = "710px";
-  calcButtonsBodyRight.style.gap = "2px";
+    //adjust size of keypad and gap in keys
+    const calcBody = document.querySelector(".calc-body");
+    calcBody.style.height = "710px";
+    calcButtonsBodyRight.style.gap = "2px";
 
-  //add event listeners to new buttons
-  addEventListenerToButtonsThatReturnsClickedNumber();
+    //add event listeners to new buttons
+    addEventListenerToButtonsThatReturnsClickedNumber();
+    extendedMode = true;
+  } else if (extendedMode) {
+    // Revove new button to righthand side
+    let calcButtonsBodyRightToDelete = document.querySelector(".extended-mode");
+    calcButtonsBodyRightToDelete.remove();
+
+    // Remove new button to lefthand side
+    calcButtonsBodyRightToDelete = document.querySelector(".extended-mode");
+    calcButtonsBodyRightToDelete.remove();
+
+    //adjust size of keypad and gap in keys
+    const calcBody = document.querySelector(".calc-body");
+    calcBody.style.height = "600px";
+    calcButtonsBodyRight.style.gap = "7px";
+    extendedMode = false;
+  }
 }
 
 addedFunctionalityToggle();
