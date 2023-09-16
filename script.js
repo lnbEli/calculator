@@ -8,8 +8,9 @@ let operatorInUse = true;
 let button;
 let extendedMode = "";
 let startUp = true;
+let decimalButtonAreadyInUSe = false;
 
-const switchButton = document.querySelector(".btn-test");
+const switchButton = document.querySelector(".extended-btn");
 switchButton.addEventListener("click", addedFunctionalityToggle);
 
 function add(num1, num2) {
@@ -61,12 +62,35 @@ function returnClickedNumber() {
   if (button === "C") {
     clearScreen();
     clearAllCalculatorVariables();
+    decimalButtonAreadyInUSe = false;
+  } else if (button === "Delete") {
+    if (calcScreenBottom.textContent.slice(-1) === " ") {
+      // remove 3 space characters as all operator are surrounded by a space
+      calcScreenBottom.textContent = calcScreenBottom.textContent.slice(0, -3);
+      operatorInUse = false;
+      operator = "";
+    } else if (calcScreenBottom.textContent.slice(-1) === ".") {
+      calcScreenBottom.textContent = calcScreenBottom.textContent.slice(0, -1);
+      decimalButtonAreadyInUSe = false;
+    } else if (calcScreenBottom.textContent.length === 0) {
+      calcScreenTop.textContent = "";
+    } else {
+      calcScreenBottom.textContent = calcScreenBottom.textContent.slice(0, -1);
+    }
+  } else if (button === ".") {
+    if (decimalButtonAreadyInUSe) {
+      return;
+    } else {
+      calcScreenBottom.textContent += button;
+      decimalButtonAreadyInUSe = true;
+    }
   } else if (
     button === "X" ||
     button === "-" ||
     button === "/" ||
     button === "+"
   ) {
+    decimalButtonAreadyInUSe = false;
     //Check if operator has alread been assigned and if it has ignores command.
     if (operator && operatorInUse) {
       return;
@@ -96,6 +120,10 @@ function calculateAndDisplayResults() {
   operandRight = calcScreenBottom.textContent.match(/\d*$/)[0];
   calcScreenBottom.textContent += ` = `;
   answer = operate(operator, Number(operandLeft), Number(operandRight));
+  console.log(String(answer).includes("."));
+  if (String(answer).includes(".")) {
+    decimalButtonAreadyInUSe = true;
+  }
   calcScreenTop.textContent = calcScreenBottom.textContent;
   if (operator === "/" && operandRight === "0") {
     calcScreenBottom.textContent = "Don't be a dafty ;)";
@@ -107,6 +135,7 @@ function calculateAndDisplayResults() {
   clearAllCalculatorVariables();
   operatorInUse = true;
 }
+
 function clearAllCalculatorVariables() {
   operator = "";
   operandLeft = 0;
