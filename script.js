@@ -38,13 +38,17 @@ function operate(operator, operandLeft, operandRight) {
 }
 
 // add event listener for all keys.
-const numberButtons = document.querySelectorAll(
-  ".calc-button, .calc-button-right "
-);
+function addEventListenerToButtonsThatReturnsClickedNumber() {
+  const numberButtons = document.querySelectorAll(
+    ".calc-button, .calc-button-right "
+  );
 
-numberButtons.forEach((el) =>
-  el.addEventListener("click", returnClickedNumber)
-);
+  numberButtons.forEach((el) =>
+    el.addEventListener("click", returnClickedNumber)
+  );
+}
+
+addEventListenerToButtonsThatReturnsClickedNumber();
 
 function returnClickedNumber() {
   button = this.textContent;
@@ -114,3 +118,32 @@ function updateOperatorOperandLeftAndScreen() {
   operandLeft = calcScreenBottom.textContent;
   calcScreenBottom.textContent += ` ${button} `;
 }
+
+function addedFunctionalityToggle() {
+  //Add new button to righthand side
+  const calcButtonsBodyRight = document.querySelector(
+    ".calc-buttons-body-right"
+  );
+  const newRightButton = document.createElement("div");
+  newRightButton.textContent = "Delete";
+  newRightButton.classList.add("calc-button-right");
+  calcButtonsBodyRight.append(newRightButton);
+
+  // //Add new button to lefthand side
+  const calcButtonsBody = document.querySelector(".calc-buttons-body-left");
+  const newLeftButton = document.createElement("div");
+  newLeftButton.textContent = ".";
+  newLeftButton.classList.add("calc-button");
+  newLeftButton.classList.add("calc-button-clear-equal");
+  calcButtonsBody.append(newLeftButton);
+
+  //adjust size of keypad and gap in keys
+  const calcBody = document.querySelector(".calc-body");
+  calcBody.style.height = "710px";
+  calcButtonsBodyRight.style.gap = "2px";
+
+  //add event listeners to new buttons
+  addEventListenerToButtonsThatReturnsClickedNumber();
+}
+
+addedFunctionalityToggle();
