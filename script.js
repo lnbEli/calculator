@@ -120,7 +120,6 @@ function calculateAndDisplayResults() {
   operandRight = calcScreenBottom.textContent.match(/\d*$/)[0];
   calcScreenBottom.textContent += ` = `;
   answer = operate(operator, Number(operandLeft), Number(operandRight));
-  console.log(String(answer).includes("."));
   if (String(answer).includes(".")) {
     decimalButtonAreadyInUSe = true;
   }
